@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -31,6 +32,7 @@ public class BookingService {
     private static final String SECRET_ID = "rzp_test_4Q9Z4gFWd7z4y1";
     private static final String SECRET_KEY = "J40vjxMkdY132zHsLmI5ECfa";
 
+    @Transactional
     public Booking bookTickets(Long userId, Long showtimeId, Integer seats){
         if (!showtimeClient.doesShowtimeExist(showtimeId)) {
             throw new ShowtimeNotFoundException("Invalid showtimeId: Showtime does not exist");

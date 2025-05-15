@@ -5,6 +5,7 @@ import com.assignment.showtime_service.exception.MovieNotFoundException;
 import com.assignment.showtime_service.repository.ShowtimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ShowtimeAdminService {
@@ -14,6 +15,7 @@ public class ShowtimeAdminService {
     @Autowired
     private MovieServiceClient movieClient;
 
+    @Transactional
     public Showtime createShowtime(Showtime showtime) {
         if (!movieClient.validateMovieId(showtime.getMovieId())) {
             throw new MovieNotFoundException("Movie not found for ID: " + showtime.getMovieId());

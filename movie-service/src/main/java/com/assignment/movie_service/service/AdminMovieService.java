@@ -4,6 +4,7 @@ import com.assignment.movie_service.entity.Movie;
 import com.assignment.movie_service.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ public class AdminMovieService {
     @Autowired
     private MovieRepository movieRepository;
 
+    @Transactional
     public Movie createMovie(Movie movie) {
         return movieRepository.save(movie);
     }
