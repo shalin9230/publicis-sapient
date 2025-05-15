@@ -30,4 +30,9 @@ public class MovieController {
     public Boolean validateMovie(@PathVariable Long id) {
         return movieService.doesMovieExist(id);
     }
+
+    @GetMapping("/movieName/{movieName}")
+    public Movie getMovieByMovieName(@PathVariable String movieName) {
+        return movieService.getMovieByMovieName(movieName);
+    }
 }

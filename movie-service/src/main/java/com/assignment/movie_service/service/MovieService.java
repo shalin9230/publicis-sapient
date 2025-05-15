@@ -23,4 +23,8 @@ public class MovieService {
     public Boolean doesMovieExist(Long id) {
         return movieRepo.existsById(id);
     }
+
+    public Movie getMovieByMovieName(String movieName) {
+        return movieRepo.findMoviesByTitle(movieName);
+    }
 }
